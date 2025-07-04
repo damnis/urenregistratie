@@ -28,7 +28,8 @@ pagina = st.sidebar.selectbox("📂 Kies een pagina", [
     "Uren invoer",
     "Overzicht",
     "Factuur maken",
-    "Instellingen"
+    "Instellingen",
+    "Werkcode toevoegen"
 ])
 
 # Paginaweergave
@@ -40,3 +41,29 @@ elif pagina == "Factuur maken":
     genereer_factuur()
 elif pagina == "Instellingen":
     instellingen_menu()
+elif pagina == "Werkcode toevoegen":
+    project_menu()
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+# ---- wit
