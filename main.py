@@ -8,10 +8,13 @@ from instellingen import instellingen_menu
 st.set_page_config(page_title="Urenregistratie & Facturatie", layout="wide")
 
 # Toon logo bovenaan
-st.image(
-    "https://www.kage.nl/newcms/wp/wp-content/uploads/cropped-Kage-ConsultLogo300.png",
-    width=300,
-    use_column_width=False
+st.markdown(
+    """
+    <div style='text-align: center;'>
+        <img src='https://www.kage.nl/newcms/wp/wp-content/uploads/cropped-Kage-ConsultLogo300.png' width='300'/>
+    </div>
+    """,
+    unsafe_allow_html=True
 )
 
 # Titel van de app (optioneel)
