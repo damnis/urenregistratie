@@ -2,14 +2,16 @@ import streamlit as st
 import sqlite3
 from datetime import date
 from klanten import get_klanten
+from projecten import get_projecten
 
-klant = st.selectbox("Klant", options=get_klanten())
+
+
 
 def invoer_uren():
     st.header("Uren Invoeren")
 
-    klant = st.text_input("Klantnaam")
-    project = st.text_input("Project")
+    klant = st.selectbox("Klant", options=get_klanten())
+    project = st.selectbox("Project", options=get_projecten())
     datum = st.date_input("Datum", date.today())
     uren = st.number_input("Aantal uur", min_value=0.25, step=0.25)
     omschrijving = st.text_area("Omschrijving")
