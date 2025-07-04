@@ -15,6 +15,7 @@ def init_db():
             eindtijd TEXT,
             uren REAL,
             omschrijving TEXT
+            factuurstatus TEXT
         ) 
         
     ''')
