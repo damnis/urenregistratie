@@ -41,7 +41,7 @@ elif pagina == "Overzicht":
     toon_overzicht()
 elif pagina == "Factuur maken":
     genereer_factuur()
-elif pagina == "Klanttoevoegen":
+elif pagina == "Klant toevoegen":
     instellingen_menu()
 elif pagina == "Werkcode toevoegen":
     project_menu()
