@@ -3,7 +3,7 @@ from uren import invoer_uren
 from overzicht import toon_overzicht
 from facturen import genereer_factuur
 from instellingen import instellingen_menu
-from projectmenu import project_menu
+from project_menu import project_menu
 from database import init_db
 init_db()
 
