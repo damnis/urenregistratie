@@ -2,9 +2,7 @@ import streamlit as st
 from uren import invoer_uren
 from overzicht import toon_overzicht
 from facturen import genereer_factuur
-from instellingen import instellingen_menu
-from project_menu import project_menu
-from medewerkers_menu import medewerkers_menu 
+from instellingen import instellingen_menu, project_menu, medewerkers_menu 
 from database import init_db
 init_db()
 
@@ -46,7 +44,7 @@ elif pagina == "Klant toevoegen":
 elif pagina == "Werkcode toevoegen":
     project_menu()
 elif pagina == "Medewerker toevoegen":
-    project_menu()
+    medewerkers_menu()
 
 
 
