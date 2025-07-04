@@ -18,6 +18,7 @@ def instellingen_menu():
     st.write("📋 Bestaande klanten:")
     st.write(get_klanten())
 
+def project_menu():
     # Project toevoegen - verplaatst
     st.subheader("Project toevoegen")
     nieuw_project = st.text_input("Nieuw project")
