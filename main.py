@@ -6,6 +6,9 @@ from instellingen import instellingen_menu
 from database import init_db
 init_db()
 
+st.image("https://www.kage.nl/newcms/wp/wp-content/uploads/cropped-Kage-ConsultLogo300.png", width=300)
+
+
 st.set_page_config(page_title="Uren & Facturatie", layout="wide")
 
 menu = st.sidebar.selectbox("Menu", ["Uren invoer", "Overzicht", "Factuur maken", "Instellingen"])
