@@ -4,6 +4,7 @@ from datetime import datetime, date, time, timedelta
 from klanten import get_klanten
 from projecten import get_projecten
 from medewerkers import get_medewerkers  # nog te maken!
+from factuurstatus import default_status
 
 def invoer_uren():
     st.header("Uren Invoeren")
