@@ -1,4 +1,8 @@
-Dennis (el capitano)
-Debby (la mama)
-Debby detachering (la puta)
-Sem (el maestro)
+Dennis (regulier) | 95
+Debby (regulier) | 95
+Sem (regulier) | 60
+Dennis (detachering) | 55
+Debby (Biont) | 42.50
+Debby (RBTC) | 37.50
+Dennis (advies) | 125
+
