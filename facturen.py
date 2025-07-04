@@ -75,6 +75,14 @@ def genereer_factuur():
             pdf.cell(200, 10, txt=f"Totaal aantal uren: {totaal}", ln=True)
             filename = f"factuur_{klant.replace(' ', '_')}.pdf"
             pdf.output(filename)
+            with open(filename, "rb") as f:
+                st.download_button(
+                    label=f"⬇️ Download factuur voor {klant}",
+                    data=f,
+                    file_name=filename,
+                    mime="application/pdf"
+                )
+    
 
             # Zet status op 'gefactureerd'
             ids = df_klant["id"].tolist()
@@ -85,3 +93,21 @@ def genereer_factuur():
         st.success("Facturen gegenereerd en status bijgewerkt.")
 
     conn.close()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# wit
