@@ -4,6 +4,7 @@ from overzicht import toon_overzicht
 from facturen import genereer_factuur
 from instellingen import instellingen_menu
 from project_menu import project_menu
+from medewerkers_menu import medewerkers_menu 
 from database import init_db
 init_db()
 
@@ -28,8 +29,9 @@ pagina = st.sidebar.selectbox("📂 Kies een pagina", [
     "Uren invoer",
     "Overzicht",
     "Factuur maken",
-    "Instellingen",
-    "Werkcode toevoegen"
+    "Klant toevoegen",
+    "Werkcode toevoegen", 
+    "Medewerker toevoegen"
 ])
 
 # Paginaweergave
@@ -39,9 +41,11 @@ elif pagina == "Overzicht":
     toon_overzicht()
 elif pagina == "Factuur maken":
     genereer_factuur()
-elif pagina == "Instellingen":
+elif pagina == "Klanttoevoegen":
     instellingen_menu()
 elif pagina == "Werkcode toevoegen":
+    project_menu()
+elif pagina == "Medewerker toevoegen":
     project_menu()
 
 
