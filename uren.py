@@ -54,8 +54,8 @@ def invoer_uren():
         conn = sqlite3.connect("facturatie.db")
         c = conn.cursor()
         c.execute("""
-            INSERT INTO uren (medewerker, klant, project, datum, starttijd, eindtijd, uren, omschrijving)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            INSERT INTO uren (medewerker, klant, project, datum, starttijd, eindtijd, uren, omschrijving, factuurstatus)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
         """, (
             medewerker,
             klant,
@@ -64,8 +64,28 @@ def invoer_uren():
             starttijd.strftime('%H:%M'),
             eindtijd.strftime('%H:%M'),
             uren,
-            omschrijving
+            omschrijving,
+            default_status()
         ))
         conn.commit()
         conn.close()
         st.success("Uren succesvol opgeslagen!")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# wit
