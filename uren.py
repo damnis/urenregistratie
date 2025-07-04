@@ -1,6 +1,9 @@
 import streamlit as st
 import sqlite3
 from datetime import date
+from klanten import get_klanten
+
+klant = st.selectbox("Klant", options=get_klanten())
 
 def invoer_uren():
     st.header("Uren Invoeren")
