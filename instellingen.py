@@ -16,3 +16,21 @@ def instellingen_menu():
 
     st.subheader("Bestaande klanten")
     st.write(get_klanten())
+
+
+# ------
+
+from projecten import get_projecten, voeg_project_toe
+
+st.subheader("Project toevoegen")
+nieuw_project = st.text_input("Nieuw project (bijv. 110 - financiële administratie)")
+
+if st.button("Toevoegen project"):
+    if nieuw_project:
+        voeg_project_toe(nieuw_project)
+        st.success(f"Project '{nieuw_project}' toegevoegd.")
+    else:
+        st.warning("Voer een projectnaam in.")
+
+st.subheader("Bestaande projecten")
+st.write(get_projecten())
