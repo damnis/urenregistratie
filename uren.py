@@ -38,9 +38,13 @@ def invoer_uren():
         berekende_uren = 0
         st.warning("Eindtijd moet na begintijd liggen!")
 
-    # Aantal uren (corrigeerbaar indien nodig)
-    uren = st.number_input("Aantal uur (aanpassen indien nodig)", value=berekende_uren, min_value=0.0, step=0.25)
+    # Extra correctie op berekende uren
+    correctie = st.number_input("Correctie op uren (+ of -)", value=0.0, step=0.25, format="%.2f")
 
+    # Totaal berekenen
+    uren = round(berekende_uren + correctie, 2)
+    st.info(f"Totaal te factureren uren: {uren}")
+   
     # Omschrijving werk
     omschrijving = st.text_area("Omschrijving")
 
