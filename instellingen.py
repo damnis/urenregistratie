@@ -31,6 +31,7 @@ def project_menu():
     st.write("📋 Bestaande projecten:")
     st.write(get_projecten())
 
+def medewerkers_menu():
     # Medewerker toevoegen - verplaatst
     st.subheader("Medewerker toevoegen")
     nieuwe_medewerker = st.text_input("Naam nieuwe medewerker")
