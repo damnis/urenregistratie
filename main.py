@@ -3,8 +3,12 @@ from uren import invoer_uren
 from overzicht import toon_overzicht
 from facturen import genereer_factuur
 from instellingen import instellingen_menu, project_menu, medewerkers_menu 
+import os
 from database import init_db
-init_db()
+
+if not os.path.exists("facturatie.db"):
+    init_db()
+
 
 # Zet pagina-instellingen
 st.set_page_config(page_title="Urenregistratie & Facturatie", layout="wide")
