@@ -5,14 +5,18 @@ def init_db():
     c = conn.cursor()
 
     c.execute('''
-        CREATE TABLE IF NOT EXISTS uren (
+       CREATE TABLE IF NOT EXISTS uren (
             id INTEGER PRIMARY KEY,
+            medewerker TEXT,
             klant TEXT,
             project TEXT,
             datum TEXT,
+            starttijd TEXT,
+            eindtijd TEXT,
             uren REAL,
             omschrijving TEXT
-        )
+        ) 
+        
     ''')
 
     conn.commit()
