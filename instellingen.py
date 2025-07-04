@@ -34,3 +34,35 @@ if st.button("Toevoegen project"):
 
 st.subheader("Bestaande projecten")
 st.write(get_projecten())
+
+
+# -------
+from medewerkers import get_medewerkers, voeg_medewerker_toe
+
+st.subheader("Medewerker toevoegen")
+nieuwe_medewerker = st.text_input("Naam nieuwe medewerker")
+
+if st.button("Toevoegen medewerker"):
+    if nieuwe_medewerker:
+        voeg_medewerker_toe(nieuwe_medewerker)
+        st.success(f"Medewerker '{nieuwe_medewerker}' toegevoegd.")
+    else:
+        st.warning("Voer een naam in.")
+
+st.subheader("Bestaande medewerkers")
+st.write(get_medewerkers())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# -------
