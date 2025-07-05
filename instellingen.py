@@ -25,7 +25,7 @@ if st.button("Toevoegen klant"):
     else:
         st.warning("Voer een naam in.")
 
-st.write("\ud83d\udccb Bestaande klanten:")
+st.write("📋 Bestaande klanten:")
 st.write(get_klanten())
 
 
