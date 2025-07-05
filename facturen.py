@@ -4,12 +4,11 @@ import sqlite3
 from datetime import date
 from factuurstatus import get_factuurstatussen, default_status
 from klanten import get_klanten
-from projecten import get_projecten
-from medewerkers import get_medewerkers
 from projecten import get_project_dict
+from medewerkers import get_medewerkers
+from prijsafspraak import get_vaste_prijs
 
 project_dict = get_project_dict()
-#omschrijving = project_dict.get(project_code, project_code)
 
 def genereer_factuur():
     st.header("📄 Facturen genereren")
@@ -63,20 +62,41 @@ def genereer_factuur():
 
         for klant in df_filtered["klant"].unique():
             df_klant = df_filtered[df_filtered["klant"] == klant]
+            prijsafspraak = get_vaste_prijs(klant)
 
-            # PDF maken per klant
             pdf = FPDF()
             pdf.add_page()
             pdf.set_font("Arial", size=12)
             pdf.cell(200, 10, txt=f"Factuur voor {klant}", ln=True)
 
-            totaal = 0
-            for i, row in df_klant.iterrows():
-                regel = f"{row['datum'].date()} - {row['project']} - {row['medewerker']} - {row['uren']}u"
-                pdf.cell(200, 8, txt=regel, ln=True)
-                totaal += float(row["uren"])  # Tarief nog toevoegen
+            totaal_uren = 0
+            totaal_bedrag = 0
+            uitzonderingsregels = []
 
-            pdf.cell(200, 10, txt=f"Totaal aantal uren: {totaal}", ln=True)
+            if prijsafspraak:
+                uitzonderingen = prijsafspraak.get("uitsluiten", [])
+                vaste_prijs = prijsafspraak.get("prijs", 0)
+
+                for i, row in df_klant.iterrows():
+                    if row["project"].startswith(tuple(uitzonderingen)):
+                        omschrijving = project_dict.get(row["project"], row["project"])
+                        regel = f"{row['datum'].date()} - {omschrijving} - {row['medewerker']} - {row['uren']}u"
+                        pdf.cell(200, 8, txt=regel, ln=True)
+                        totaal_uren += float(row["uren"])
+                    else:
+                        uitzonderingsregels.append(row["id"])
+
+                pdf.cell(200, 10, txt=f"Vaste prijsafspraak: €{vaste_prijs:.2f}", ln=True)
+                totaal_bedrag += vaste_prijs
+
+            else:
+                for i, row in df_klant.iterrows():
+                    omschrijving = project_dict.get(row["project"], row["project"])
+                    regel = f"{row['datum'].date()} - {omschrijving} - {row['medewerker']} - {row['uren']}u"
+                    pdf.cell(200, 8, txt=regel, ln=True)
+                    totaal_uren += float(row["uren"])
+
+            pdf.cell(200, 10, txt=f"Totaal aantal uren: {totaal_uren}", ln=True)
             filename = f"factuur_{klant.replace(' ', '_')}.pdf"
             pdf.output(filename)
             with open(filename, "rb") as f:
@@ -86,9 +106,8 @@ def genereer_factuur():
                     file_name=filename,
                     mime="application/pdf"
                 )
-    
 
-            # Zet status op 'gefactureerd'
+            # Update status naar 'gefactureerd'
             ids = df_klant["id"].tolist()
             c = conn.cursor()
             c.executemany("UPDATE uren SET factuurstatus = 'gefactureerd' WHERE id = ?", [(i,) for i in ids])
@@ -97,43 +116,3 @@ def genereer_factuur():
         st.success("Facturen gegenereerd en status bijgewerkt.")
 
     conn.close()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    # wit
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# wit
