@@ -6,10 +6,10 @@ from medewerkers import get_medewerkers, voeg_medewerker_toe, get_medewerkers_di
 from prijsafspraak import get_prijsafspraken
 
 def instellingen_menu():
-    st.header("Instellingen")
+  #  st.header("Instellingen")
 
-    # Klant toevoegen
-    st.subheader("Klant toevoegen")
+    # Klant toevoegen # was sub.header
+    st.header("Klant toevoegen") 
     bestaande_klanten = get_klanten()
     nieuwe_klant = st.text_input("Naam nieuwe klant")
     vaste_prijs = st.number_input("Vaste prijsafspraak (optioneel)", min_value=0.0, value=0.0, step=50.0, format="%.2f")
@@ -28,7 +28,7 @@ def instellingen_menu():
         else:
             st.warning("Voer een naam in.")
 
-    st.write("\ud83d\udccb Bestaande klanten:")
+    st.write("📋 Bestaande klanten:")
     st.write(bestaande_klanten)
 
     # Prijsafspraak toevoegen aan bestaande klant
