@@ -1,2 +1,4 @@
 110 - financiële administratie
 210 - aanleggen dossier
+810 - Advies 
+820 - Management 
