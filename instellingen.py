@@ -33,7 +33,7 @@ def instellingen_menu():
 
     # Prijsafspraak toevoegen aan bestaande klant
     st.subheader("Prijsafspraak toevoegen aan bestaande klant")
-    geselecteerde_klant = st.selectbox("Selecteer klant", opties=bestaande_klanten)
+    geselecteerde_klant = st.selectbox("Selecteer klant", options=bestaande_klanten)
     nieuwe_prijs = st.number_input("Nieuwe vaste prijsafspraak", min_value=0.0, value=0.0, step=50.0, format="%.2f", key="nieuw_prijs")
     nieuwe_codes = st.text_input("Uitsluitingsprojectcodes (komma-gescheiden, bijv. 810,820)", key="nieuw_codes")
 
