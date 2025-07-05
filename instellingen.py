@@ -50,10 +50,10 @@ def locatie_menu():
     # Locatie toevoegen - verplaatst
     st.subheader("Locatie toevoegen")
     nieuwe_locatie = st.text_input("Naam nieuwe locatie")
-    if st.button("Toevoegen medewerker"):
-        if nieuwe_medewerker:
-            voeg_locatie_toe(nieuwe_medewerker, nieuw_tarief)
-            st.success(f"Medewerker '{nieuwe_medewerker}' toegevoegd met tarief €{nieuw_tarief}/uur.")
+    if st.button("Toevoegen locatie"):
+        if nieuwe_locatie:
+            voeg_locatie_toe(nieuwe_locatie)
+            st.success(f"Locatie '{nieuwe_locatie}' toegevoegd.")
         else:
             st.warning("Voer een locatie in.")
     st.write("📋 Bestaande locaties")
