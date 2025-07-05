@@ -2,7 +2,7 @@ def get_prijsafspraken():
     return {
         "klant1": {
             "prijs": 500.00,
-            "uitsluiten": ["810", "820", "899"]  # of beginnend met '8'
+            "uitsluiten": ["810", "820"]  # of beginnend met '8'
         },
         "klant2": {
             "prijs": 750.00,
