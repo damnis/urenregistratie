@@ -6,6 +6,10 @@ from factuurstatus import get_factuurstatussen, default_status
 from klanten import get_klanten
 from projecten import get_projecten
 from medewerkers import get_medewerkers
+from projecten import get_project_dict
+
+project_dict = get_project_dict()
+omschrijving = project_dict.get(project_code, project_code)
 
 def genereer_factuur():
     st.header("📄 Facturen genereren")
