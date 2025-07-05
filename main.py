@@ -2,7 +2,7 @@ import streamlit as st
 from uren import invoer_uren
 from overzicht import toon_overzicht
 from facturen import genereer_factuur
-from instellingen import instellingen_menu, project_menu, medewerkers_menu 
+from instellingen import instellingen_menu, project_menu, medewerkers_menu, locatie_menu 
 import os
 from database import init_db
 
