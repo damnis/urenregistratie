@@ -23,7 +23,7 @@ def invoer_uren():
     locatie = st.selectbox("Locatie", options=get_locatie())
     
     # Projectselectie
-    project = st.selectbox("Project", options=get_projecten())
+   # project = st.selectbox("Project", options=get_projecten())
     # Gebruiker kiest "110 - Financiële administratie"
     project_keuze = st.selectbox("Project", options=get_projecten())
     project_code = project_keuze.split(" - ")[0]  # sla alleen "110" op
