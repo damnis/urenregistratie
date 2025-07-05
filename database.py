@@ -8,6 +8,7 @@ def init_db():
             id INTEGER PRIMARY KEY,
             medewerker TEXT,
             klant TEXT,
+            locatie TEXT,
             project TEXT,
             datum TEXT,
             starttijd TEXT,
