@@ -20,6 +20,9 @@ def invoer_uren():
 
     # Projectselectie
     project = st.selectbox("Project", options=get_projecten())
+    # Gebruiker kiest "110 - Financiële administratie"
+    project_keuze = st.selectbox("Project", options=get_projecten())
+    project_code = project_keuze.split(" - ")[0]  # sla alleen "110" op
 
     # Begintijd en eindtijd (in kolommen)
     col1, col2 = st.columns(2)
