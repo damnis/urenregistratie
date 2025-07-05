@@ -61,11 +61,12 @@ def invoer_uren():
         conn = sqlite3.connect("facturatie.db")
         c = conn.cursor()
         c.execute("""
-            INSERT INTO uren (medewerker, klant, project, datum, starttijd, eindtijd, uren, omschrijving, factuurstatus)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+            INSERT INTO uren (medewerker, klant, locatie, project, datum, starttijd, eindtijd, uren, omschrijving, factuurstatus)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         """, (
             medewerker,
             klant,
+            locatie, 
             project,
             datum.isoformat(),
             starttijd.strftime('%H:%M'),
