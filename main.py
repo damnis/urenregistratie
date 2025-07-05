@@ -33,7 +33,8 @@ pagina = st.sidebar.selectbox("📂 Kies een pagina", [
     "Factuur maken",
     "Klant toevoegen",
     "Werkcode toevoegen", 
-    "Medewerker toevoegen"
+    "Medewerker toevoegen",
+    "Locatie toevoegen"
 ])
 
 # Paginaweergave
@@ -49,6 +50,9 @@ elif pagina == "Werkcode toevoegen":
     project_menu()
 elif pagina == "Medewerker toevoegen":
     medewerkers_menu()
+elif pagina == "Locatie toevoegen":
+    locatie_menu()
+
 
 
 
