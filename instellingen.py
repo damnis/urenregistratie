@@ -1,23 +1,48 @@
-import streamlit as st
-from klanten import get_klanten, voeg_klant_toe
-from projecten import get_projecten, get_project_dict # voeg_project_toe
-from locatie import get_locatie, voeg_locatie_toe
-from medewerkers import get_medewerkers, voeg_medewerker_toe, get_medewerkers_dict
+import streamlit as st 
+from klanten import get_klanten, voeg_klant_toe 
+from projecten import get_projecten, get_project_dict  # voeg_project_toe 
+from locatie import get_locatie, voeg_locatie_toe 
+from medewerkers import get_medewerkers, voeg_medewerker_toe, get_medewerkers_dict 
+from prijsafspraak import get_prijsafspraken
 
-def instellingen_menu():
-    st.header("Instellingen")
+
+def instellingen_menu(): st.header("Instellingen")
+
+# Klant toevoegen
+st.subheader("Klant toevoegen")
+nieuwe_klant = st.text_input("Naam nieuwe klant")
+vaste_prijs = st.number_input("Vaste prijsafspraak (optioneel)", min_value=0.0, value=0.0, step=50.0, format="%.2f")
+uitzonderingscodes = st.text_input("Projectcodes uitsluiten (komma-gescheiden, bijv. 810,820)")
+
+if st.button("Toevoegen klant"):
+    if nieuwe_klant:
+        voeg_klant_toe(nieuwe_klant)
+        if vaste_prijs > 0:
+            # Opslaan prijsafspraak als regel in prijsafspraken.txt (optioneel)
+            with open("prijsafspraken.txt", "a") as f:
+                f.write(f"{nieuwe_klant}|{vaste_prijs}|{uitzonderingscodes}\n")
+        st.success(f"Klant '{nieuwe_klant}' toegevoegd.")
+    else:
+        st.warning("Voer een naam in.")
+
+st.write("\ud83d\udccb Bestaande klanten:")
+st.write(get_klanten())
+
+
+#def instellingen_menu():
+ #   st.header("Instellingen")
 
     # Klant toevoegen
-    st.subheader("Klant toevoegen")
-    nieuwe_klant = st.text_input("Naam nieuwe klant")
-    if st.button("Toevoegen klant"):
-        if nieuwe_klant:
-            voeg_klant_toe(nieuwe_klant)
-            st.success(f"Klant '{nieuwe_klant}' toegevoegd.")
-        else:
-            st.warning("Voer een naam in.")
-    st.write("📋 Bestaande klanten:")
-    st.write(get_klanten())
+#    st.subheader("Klant toevoegen")
+#    nieuwe_klant = st.text_input("Naam nieuwe klant")
+#    if st.button("Toevoegen klant"):
+#        if nieuwe_klant:
+#            voeg_klant_toe(nieuwe_klant)
+ #           st.success(f"Klant '{nieuwe_klant}' toegevoegd.")
+ #       else:
+#            st.warning("Voer een naam in.")
+#    st.write("📋 Bestaande klanten:")
+ #   st.write(get_klanten())
 
 def project_menu():
     # Project toevoegen - verplaatst
