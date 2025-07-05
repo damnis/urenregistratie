@@ -2,6 +2,8 @@ def get_project_dict():
     return {
         "110": "Financiële administratie",
         "210": "Aanleggen dossier",
+        "810": "Advies",
+        "820": "Management",
         # enz.
     }
 
