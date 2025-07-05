@@ -1,6 +1,6 @@
 import streamlit as st
 from klanten import get_klanten, voeg_klant_toe
-from projecten import get_projecten, voeg_project_toe
+from projecten import get_projecten, get_project_dict # voeg_project_toe
 from locatie import get_locatie, voeg_locatie_toe
 from medewerkers import get_medewerkers, voeg_medewerker_toe, get_medewerkers_dict
 
