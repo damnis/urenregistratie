@@ -1,14 +1,11 @@
-# projecten.py
-def get_projecten():
-    try:
-        with open("projecten.txt", "r") as f:
-            projecten = [lijn.strip() for lijn in f.readlines()]
-    except FileNotFoundError:
-        projecten = []
-    return projecten
+def get_project_dict():
+    return {
+        "110": "Financiële administratie",
+        "210": "Aanleggen dossier",
+        # enz.
+    }
 
-def voeg_project_toe(naam):
-    projecten = get_projecten()
-    if naam not in projecten:
-        with open("projecten.txt", "a") as f:
-            f.write(f"{naam}\n")
+def get_projecten():
+    # Voor dropdown: "110 - Financiële administratie"
+    d = get_project_dict()
+    return [f"{code} - {naam}" for code, naam in d.items()]
