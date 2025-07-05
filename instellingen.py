@@ -1,6 +1,7 @@
 import streamlit as st
 from klanten import get_klanten, voeg_klant_toe
 from projecten import get_projecten, voeg_project_toe
+from locatie import get_locatie, voeg_locatie_toe
 from medewerkers import get_medewerkers, voeg_medewerker_toe, get_medewerkers_dict
 
 def instellingen_menu():
@@ -36,14 +37,32 @@ def medewerkers_menu():
     st.subheader("Medewerker toevoegen")
     nieuwe_medewerker = st.text_input("Naam nieuwe medewerker")
     nieuw_tarief = st.number_input("Tarief per uur (EUR)", min_value=0.0, step=5.0)
-    if st.button("Toevoegen medewerker"):
-        if nieuwe_medewerker:
-            voeg_medewerker_toe(nieuwe_medewerker, nieuw_tarief)
-            st.success(f"Medewerker '{nieuwe_medewerker}' toegevoegd met tarief €{nieuw_tarief}/uur.")
+    if st.button("Toevoegen locatie"):
+        if nieuwe_locatie:
+            voeg_locatie_toe(nieuwe_locatie)
+            st.success(f"Locatie '{nieuwe_locatie}' toegevoegd.")
         else:
             st.warning("Voer een naam in.")
     st.write("📋 Bestaande medewerkers + tarieven:")
     st.write(get_medewerkers_dict())
+
+def locatie_menu():
+    # Locatie toevoegen - verplaatst
+    st.subheader("Locatie toevoegen")
+    nieuwe_locatie = st.text_input("Naam nieuwe locatie")
+    if st.button("Toevoegen medewerker"):
+        if nieuwe_medewerker:
+            voeg_locatie_toe(nieuwe_medewerker, nieuw_tarief)
+            st.success(f"Medewerker '{nieuwe_medewerker}' toegevoegd met tarief €{nieuw_tarief}/uur.")
+        else:
+            st.warning("Voer een locatie in.")
+    st.write("📋 Bestaande locaties")
+    st.write(get_locatie())
+
+
+
+
+
 
 
 
