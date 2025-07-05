@@ -67,7 +67,7 @@ def invoer_uren():
             medewerker,
             klant,
             locatie, 
-            project,
+            project_code,
             datum.isoformat(),
             starttijd.strftime('%H:%M'),
             eindtijd.strftime('%H:%M'),
