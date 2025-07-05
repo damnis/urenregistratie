@@ -2,8 +2,9 @@ import streamlit as st
 import sqlite3
 from datetime import datetime, date, time, timedelta
 from klanten import get_klanten
+from locatie import get_locatie 
 from projecten import get_projecten
-from medewerkers import get_medewerkers  # nog te maken!
+from medewerkers import get_medewerkers
 from factuurstatus import default_status
 
 def invoer_uren():
@@ -18,6 +19,9 @@ def invoer_uren():
     # Klantselectie (met mogelijkheid om te typen)
     klant = st.selectbox("Klant", options=get_klanten())
 
+    # Locatieselectie (met mogelijkheid om te typen)
+    locatie = st.selectbox("Locatie", options=get_locatie())
+    
     # Projectselectie
     project = st.selectbox("Project", options=get_projecten())
     # Gebruiker kiest "110 - Financiële administratie"
