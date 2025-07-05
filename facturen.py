@@ -86,6 +86,10 @@ def genereer_factuur():
                     else:
                         uitzonderingsregels.append(row["id"])
 
+                
+                # 💬 Toon het verwachte factuurtotaal in euro
+                st.write(f"**Verwacht te factureren bedrag voor {klant}: € {totaal_bedrag:.2f}**")
+
                 pdf.cell(200, 10, txt=f"Vaste prijsafspraak: €{vaste_prijs:.2f}", ln=True)
                 totaal_bedrag += vaste_prijs
 
@@ -96,6 +100,10 @@ def genereer_factuur():
                     pdf.cell(200, 8, txt=regel, ln=True)
                     totaal_uren += float(row["uren"])
 
+                # 💬 Toon het verwachte factuurtotaal in euro
+                st.write(f"**Verwacht te factureren bedrag voor {klant}: € {totaal_bedrag:.2f}**")
+
+            
             pdf.cell(200, 10, txt=f"Totaal aantal uren: {totaal_uren}", ln=True)
             filename = f"factuur_{klant.replace(' ', '_')}.pdf"
             pdf.output(filename)
