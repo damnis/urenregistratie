@@ -6,7 +6,8 @@ from medewerkers import get_medewerkers, voeg_medewerker_toe, get_medewerkers_di
 from prijsafspraak import get_prijsafspraken
 
 
-def instellingen_menu(): st.header("Instellingen")
+def instellingen_menu(): 
+    # st.header("Instellingen")
     # Klant toevoegen
     st.subheader("Klant toevoegen")
     nieuwe_klant = st.text_input("Naam nieuwe klant")
